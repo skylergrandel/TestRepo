@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+
+jobs:
+  check-file:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify notes.txt exists
+        run: test -f notes.txt
+
+      - name: Verify notes.txt is not empty
+        run: test -s notes.txt
